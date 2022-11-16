@@ -31,7 +31,7 @@ a:hover {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 20px 60px 20px 60px;
+    padding: 20px 60px 10px 60px;
     color: black;
 }
 
@@ -42,7 +42,7 @@ a:hover {
 }
 
 .wrapper {
-    margin: 10px;
+    margin-bottom: 40px;
 }
 
 .header {
@@ -57,7 +57,7 @@ a:hover {
 
 .filters {
     display: flex;
-    margin: 10px 130px 10px 130px;
+    margin: 0px 130px 0px 130px;
     padding: 30px;
     justify-content: center; 
     background-color: lightblue;
