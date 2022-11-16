@@ -27,11 +27,11 @@ a:hover {
 }
 
 .menu {
-    background-color: beige;
+    background-color: rgb(255, 236, 112);
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 20px 60px 10px 60px;
+    padding: 20px 60px 20px 60px;
     color: black;
 }
 
@@ -96,6 +96,7 @@ a:hover {
 .footer {
     background-color: burlywood;
     bottom: 0;
+    height: 80px;
     width: 100%;
     display: flex;
     justify-content: center;
