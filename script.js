@@ -4,6 +4,21 @@
 //     });
 // }
 
+function injectHTML(list) {
+    console.log('fired injectHTML');
+    const target = document.querySelector('#info');
+    target.innerHTML = '';
+
+    const listEl = document.createElement('ol');
+    target.appendChild(listEl);
+    list.forEach((item) => {
+        const el = document.createElement('li');
+        el.innerText = item.organization;
+        listEl.appendChild(el);
+    });
+    
+}
+
 function pullData(array,item){
     return array.map((currArr) => {
         return currArr[item];
@@ -30,7 +45,16 @@ async function mainEvent() {
     // const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
     // const chartTarget = document.querySelector('#myChart');
     // submit.style.display = 'none'; // let your submit button disappear
-    
+    const form = document.querySelector('.filters box')
+
+    let currentArr = [];
+
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+      injectHTML(filteredList);
+      // markerPlace(filteredList, pageMap);
+    });
 }
+
 document.addEventListener("DOMContentLoaded", async () => mainEvent());
 // https://data.princegeorgescountymd.gov/resource/9tsa-iner.json
