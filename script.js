@@ -30,9 +30,13 @@ async function retrieveData (){
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
     // console.log(json);
-    // console.log(pullData(json,'type_litter'));
-    // console.log(pullData(json,'organization'));
-    // console.log(pullData(json,'number_bags'));
+    // console.log(pullData(json, 'ORGANIZATION'));
+    // console.log(pullData(json, 'TYPE_CLEANUP'));
+    // console.log(pullData(json, 'TYPE_LITTER'));
+    // console.log(pullData(json, 'TOTAL_BAGS_LITTER'));
+    // console.log(pullData(json, 'MAJOR_WSHED'));
+    // console.log(pullData(json, 'COUNCIL_DISTRICT'));
+    // console.log(pullData(json, 'DPWT_MAIN_DIST'));
     // const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
     return pullData(json,'type_litter');
 
