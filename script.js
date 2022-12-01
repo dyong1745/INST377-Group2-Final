@@ -13,7 +13,7 @@ function injectHTML(list) {
     target.appendChild(listEl);
     list.forEach((item) => {
         const el = document.createElement('li');
-        el.innerText = item.organization;
+        el.innerText = item;
         listEl.appendChild(el);
     });
     
@@ -29,17 +29,26 @@ async function retrieveData (){
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
-    console.log(json);
-    console.log(pullData(json,'type_litter'));
-    console.log(pullData(json,'organization'));
-    console.log(pullData(json,'number_bags'));
-    const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-    return reply;
+    // console.log(json);
+    // console.log(pullData(json,'type_litter'));
+    // console.log(pullData(json,'organization'));
+    // console.log(pullData(json,'number_bags'));
+    // const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+    return pullData(json,'type_litter');
 
 }
 
 async function mainEvent() {
-    retrieveData()
+    let uniqueArr = []
+    const data = await retrieveData();
+    console.log(data);
+    data.forEach((item) => {
+        if (uniqueArr.includes(item) === false){
+            uniqueArr.push(item)
+        }
+    })
+
+    console.log(uniqueArr);
     // const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     // const submit = document.querySelector('#get-resto'); // get a reference to your submit button
     // const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
@@ -52,8 +61,7 @@ async function mainEvent() {
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      injectHTML(filteredList);
-      // markerPlace(filteredList, pageMap);
+      injectHTML(uniqueArr);
     });
 }
 
