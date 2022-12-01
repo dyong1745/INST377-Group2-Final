@@ -42,6 +42,14 @@ async function retrieveData (){
 
 }
 
+function initMap() {
+    const map = L.map('map_box').setView([38.9897, -76.9378], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+    return map;
+}
+
 async function mainEvent() {
     let uniqueArr = []
     const data = await retrieveData();
@@ -53,6 +61,7 @@ async function mainEvent() {
     })
 
     console.log(uniqueArr);
+    const showMap = initMap();
     // const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     // const submit = document.querySelector('#get-resto'); // get a reference to your submit button
     // const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation

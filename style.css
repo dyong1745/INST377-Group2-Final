@@ -76,6 +76,7 @@ a:hover {
 }
 
 .map_box {
+    display: block;
     padding: 150px;
     margin: 10px;
     background-color: lightsalmon;
