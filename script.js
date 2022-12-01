@@ -45,8 +45,9 @@ async function mainEvent() {
     // const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
     // const chartTarget = document.querySelector('#myChart');
     // submit.style.display = 'none'; // let your submit button disappear
-    const form = document.querySelector('.filters box')
+    const form = document.querySelector('.filters_box')
 
+    console.log(form);
     let currentArr = [];
 
     form.addEventListener('input', (event) => {
