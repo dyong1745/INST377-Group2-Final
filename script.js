@@ -38,7 +38,7 @@ async function retrieveData (){
     // console.log(pullData(json, 'COUNCIL_DISTRICT'));
     // console.log(pullData(json, 'DPWT_MAIN_DIST'));
     // const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-    return pullData(json,'type_litter');
+    return pullData(json,'type_cleanup');
 
 }
 
