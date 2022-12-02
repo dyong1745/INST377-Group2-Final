@@ -11,7 +11,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    background-color: beige;
+    background-color: rgb(255, 255, 255);
     font-size: 20px;
     font-family: ‘Segoe UI’, sans-serif;
 }
@@ -27,7 +27,7 @@ a:hover {
 }
 
 .menu {
-    background-color: rgb(255, 236, 112);
+    background-color: rgb(255, 245, 183);
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -51,23 +51,10 @@ a:hover {
     font-size: 20px;
 }
 
-.box {
-    border-radius: 5px;
-}
-
-.filters_box {
-    display: flex;
-    margin: 0px 130px 0px 130px;
-    padding: 30px;
-    justify-content: center; 
-    background-color: lightblue;
-}
-
 .container {
     display: flex;
     margin: 10px;
     justify-content: center;
-    justify-content: space-evenly;
 }
 
 .visuals {
@@ -75,26 +62,48 @@ a:hover {
     flex-direction: column;
 }
 
-#map_box {
-    display: block;
-    height: 380px;
-    width: 500px;
+.filters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
 }
 
-.chart_box {
-    padding: 150px;
-    margin: 10px;
+#refresh-button {
+    margin-top: 20px;
+}
+
+#map {
+    display: block;
+    height: 400px;
+    width: 600px;
+    margin-bottom: 30px;
+}
+
+#chart {
+    height: 400px;
+    width: 600px;
     background-color: lightgreen;
 }
 
-.information_box {
-    padding: 150px;
-    margin: 10px;
-    background-color: rosybrown;
+.map-filters {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+    padding: 25px;
+    margin-top: 20px;
+    background-color: lightgreen;
+}
+
+.chart-filters {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 260px;
+    background-color: violet;
 }
 
 .footer {
-    background-color: burlywood;
+    background-color:rgb(255, 245, 183);
     bottom: 0;
     height: 80px;
     width: 100%;
