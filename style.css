@@ -75,11 +75,10 @@ a:hover {
     flex-direction: column;
 }
 
-.map_box {
+#map_box {
     display: block;
-    padding: 150px;
-    margin: 10px;
-    background-color: lightsalmon;
+    height: 380px;
+    width: 500px;
 }
 
 .chart_box {

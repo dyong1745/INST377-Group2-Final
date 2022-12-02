@@ -61,6 +61,7 @@ async function mainEvent() {
     })
 
     console.log(uniqueArr);
+    const refreshButton = document.querySelector('#refresh_button');
     const showMap = initMap();
     // const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     // const submit = document.querySelector('#get-resto'); // get a reference to your submit button
