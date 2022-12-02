@@ -25,7 +25,31 @@ function pullData(array,item){
     })
 
 }
-async function retrieveData (){
+
+function initMap() {
+    const map = L.map('map').setView([38.9897, -76.9378], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+    return map;
+}
+
+function markerPlace(array, map) {
+    map.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        layer.remove();
+      }
+    });
+    array.forEach((item, index) => {
+      const {coordinates} = item.geocoded_column;
+      L.marker([coordinates[1], coordinates[0]]).addTo(map);
+      if (index === 0) {
+        map.setView([coordinates[1], coordinates[0]], 10);
+      }
+    });
+  }
+
+  async function retrieveData (){
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
@@ -42,14 +66,6 @@ async function retrieveData (){
 
 }
 
-function initMap() {
-    const map = L.map('map').setView([38.9897, -76.9378], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
-    return map;
-}
-
 async function mainEvent() {
     let uniqueArr = []
     const data = await retrieveData();
@@ -60,6 +76,7 @@ async function mainEvent() {
         }
     })
 
+    // data array
     console.log(uniqueArr);
     const refreshButton = document.querySelector('#refresh_button');
     const showMap = initMap();
@@ -76,6 +93,7 @@ async function mainEvent() {
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
       injectHTML(uniqueArr);
+      markerPlace(uniqueArr, showMap);
     });
 }
 
