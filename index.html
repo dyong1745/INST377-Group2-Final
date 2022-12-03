@@ -41,7 +41,7 @@
           <div id = "map"></div>
           <div id = "chart" >Chart</div>
         </div>
-        <div class="filters">
+        <form action ="/api" class = "filters">
           <div class="map-filters" id="map-filters">
             <p>Map Filters</p>
             <label for="organization">Organization:</label>
@@ -59,12 +59,12 @@
               <option value="BigBelly">BigBelly</option>
               <option value="Other">Other</option>
             </select>
-            <button type="refresh" id="refresh-button">Refresh</button>
+            <button type="submit" id="refresh-button">Refresh</button>
           </div>
           <div class="chart-filters" id="chart-filters">
             <p>Chart Filters</p>
           </div>
-        </div>
+        </form>
       </div>
     </div>
     <footer class="footer">

@@ -6,7 +6,7 @@ function filterLitterData(array,orgInput1,cleanupInput2){
 
 function injectHTML(list) {
     console.log('fired injectHTML');
-    const target = document.querySelector('#info');
+    const target = document.querySelector('#chart-filters');
     target.innerHTML = '';
 
     const listEl = document.createElement('ol');
@@ -85,7 +85,6 @@ async function mainEvent() {
 
     // data array
     console.log(uniqueArr);
-    const refreshButton = document.querySelector('#refresh_button');
     const organization = document.querySelector('#organization');
     const type_cleanup = document.querySelector('#type-clean');
     const showMap = initMap();
@@ -102,7 +101,8 @@ async function mainEvent() {
     // const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
     // const chartTarget = document.querySelector('#myChart');
     // submit.style.display = 'none'; // let your submit button disappear
-    const form = document.querySelector('.filters_box')
+    const form = document.querySelector('.filters')
+    const submit = document.querySelector('#refresh-button');
 
     const mapFilters = filterLitterData(json,org_value, type_clean_value).slice(0,10);
     markerPlace(mapFilters, showMap);
@@ -110,11 +110,10 @@ async function mainEvent() {
     console.log(form);
     let currentArr = [];
 
-    refreshButton.addEventListener('click', (event) => {
-      console.log('working');
-    //   injectHTML(uniqueArr);
-     
-     
+    form.addEventListener('submit', (submitEvent) => {
+      console.log('Button Pressed');
+      injectHTML(uniqueArr);
+      markerPlace(mapFilters, showMap)
     });
 }
 
