@@ -1,8 +1,8 @@
-// function filterData(array,filterInputValue){
-//     return array.filter((item) => {
-
-//     });
-// }
+function filterLitterData(array,orgInput1,cleanupInput2){
+    let coordArray = []
+   return array.filter((item) => item.organization === orgInput1 && item.type_cleanup === cleanupInput2);
+    
+}
 
 function injectHTML(list) {
     console.log('fired injectHTML');
@@ -41,10 +41,10 @@ function markerPlace(array, map) {
       }
     });
     array.forEach((item, index) => {
-      const {coordinates} = item.geocoded_column;
-      L.marker([coordinates[1], coordinates[0]]).addTo(map);
+      const {longitude,latitude} = item.geocoded_column;
+      L.marker([longitude, latitude]).addTo(map);
       if (index === 0) {
-        map.setView([coordinates[1], coordinates[0]], 10);
+        map.setView([longitude, latitude], 10);
       }
     });
   }
@@ -62,24 +62,41 @@ function markerPlace(array, map) {
     // console.log(pullData(json, 'COUNCIL_DISTRICT'));
     // console.log(pullData(json, 'DPWT_MAIN_DIST'));
     // const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-    return pullData(json,'type_cleanup');
+    return pullData(json);
 
 }
 
 async function mainEvent() {
+    const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
+    const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+    const json = await data.json(); // the data isn't json until we access it using dot notation
     let uniqueArr = []
-    const data = await retrieveData();
-    console.log(data);
-    data.forEach((item) => {
-        if (uniqueArr.includes(item) === false){
-            uniqueArr.push(item)
-        }
-    })
+   
+    
+    
+    // console.log('mapfilters:', mapFilters);
+    console.log(json);
+    // console.log(json[0]['latitude']);
+    // data.forEach((item) => {
+    //     if (uniqueArr.includes(item) === false){
+    //         uniqueArr.push(item)
+    //     }
+    // })
 
     // data array
     console.log(uniqueArr);
     const refreshButton = document.querySelector('#refresh_button');
+    const organization = document.querySelector('#organization');
+    const type_cleanup = document.querySelector('#type-clean');
     const showMap = initMap();
+
+    const org_value = organization.value;
+    // const orgValue = org.options[org.selectedIndex].value;
+    const type_clean_value = type_cleanup.value;
+    // const clean_val = type_clean.options[type_clean.selectedIndex].value;
+
+    // console.log("org:", org);
+    // console.log("clean",type_clean);
     // const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     // const submit = document.querySelector('#get-resto'); // get a reference to your submit button
     // const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
@@ -87,13 +104,17 @@ async function mainEvent() {
     // submit.style.display = 'none'; // let your submit button disappear
     const form = document.querySelector('.filters_box')
 
+    const mapFilters = filterLitterData(json,org_value, type_clean_value).slice(0,10);
+    markerPlace(mapFilters, showMap);
+   
     console.log(form);
     let currentArr = [];
 
-    form.addEventListener('input', (event) => {
-      console.log(event.target.value);
-      injectHTML(uniqueArr);
-      markerPlace(uniqueArr, showMap);
+    refreshButton.addEventListener('click', (event) => {
+      console.log('working');
+    //   injectHTML(uniqueArr);
+     
+     
     });
 }
 
