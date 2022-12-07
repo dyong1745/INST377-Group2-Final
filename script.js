@@ -1,6 +1,6 @@
-function filterLitterData(array,orgInput1,cleanupInput2){
+function filterLitterData(array, typeLitterInput1){
     let coordArray = []
-   return array.filter((item) => item.organization === orgInput1 && item.type_cleanup === cleanupInput2);
+   return array.filter((item) => item.type_litter === typeLitterInput1);
     
 }
 
@@ -85,13 +85,16 @@ async function mainEvent() {
 
     // data array
     console.log(uniqueArr);
-    const organization = document.querySelector('#organization');
-    const type_cleanup = document.querySelector('#type-clean');
+    const typeLitter = document.querySelector('#type_litter');
+    // const organization = document.querySelector('#organization');
+    // const type_cleanup = document.querySelector('#type-clean');
     const showMap = initMap();
 
-    const org_value = organization.value;
+    const type_litter_value = typeLitter.value;
+    // const org_value = organization.value;
+    // const type_clean_value = type_cleanup.value;
+
     // const orgValue = org.options[org.selectedIndex].value;
-    const type_clean_value = type_cleanup.value;
     // const clean_val = type_clean.options[type_clean.selectedIndex].value;
 
     // console.log("org:", org);
@@ -104,7 +107,7 @@ async function mainEvent() {
     const form = document.querySelector('.filters')
     const submit = document.querySelector('#refresh-button');
 
-    const mapFilters = filterLitterData(json,org_value, type_clean_value).slice(0,10);
+    const mapFilters = filterLitterData(json, type_litter_value).slice(0,10);
     markerPlace(mapFilters, showMap);
    
     console.log(form);
