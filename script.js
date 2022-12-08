@@ -110,12 +110,14 @@ async function mainEvent() {
 
     // filter map data and place markers on the map
     const mapFilters = filterLitterData(json, type_litter_value).slice(0,30);
+    console.log('mapFilters', map)
     markerPlace(mapFilters, showMap);
    
     console.log(form);
     let currentArr = [];
 
     form.addEventListener('submit', (submitEvent) => {
+        // submitEvent.preventDefault();
       console.log('Button Pressed');
       injectHTML(uniqueArr);
       markerPlace(mapFilters, showMap)
