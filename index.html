@@ -38,7 +38,9 @@
       </header>
       <div class="container">
         <div class="visuals">
+          <div class = "map-heading">Map of Litter Cleanups Based on Type of Litter</div>
           <div id = "map"></div>
+          <div class = "chart-heading">Total Bags of Litter By Location</div>
           <div id = "chart" >Chart</div>
         </div>
         <form class = "filters">
@@ -69,17 +71,6 @@
               <option value = "dpwt-dist">DPWT Main District</option>
               <option value = "majr_wshd">Major Watershed</option>
             </select>
-            <!--
-            <fieldset class='x-axis-filters'>
-              <legend>X-axis Categories:</legend>
-              <input id = "council_dist" name = "x-filters" type = "radio" value = "council_district" checked/>
-              <label for='council_dist' class='radio-button'>Council District</label>
-              <input id = "dpwt_dist" name = "x-filters" type = "radio" value = "dpwt_district"/>
-              <label for='dpwt_dist' class='radio-button'>DPWT Main District</label>
-              <input id = "mjr_wshd" name = "x-filters" type = "radio" value = "major_wshed"/>
-              <label for='mjr_wshd' class='radio-button'>Major Watershed</label>
-            </fieldset>
-            -->
             <button type="submit" id="refresh-button-alt">Refresh</button>
           </div>
         </form>
