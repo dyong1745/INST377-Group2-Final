@@ -43,7 +43,7 @@
         </div>
         <form class = "filters">
           <div class="map-filters" id="map-filters">
-            <p>Map Filters</p>
+            <div class = "filter-heading"><strong>Map Filter</strong></div>
             <label for="type_litter">Type of Litter:</label>
             <select id="type_litter" name="type_litter">
               <option value="bags_garbage">Bags of Garbage</option>
@@ -62,7 +62,25 @@
             <button type="submit" id="refresh-button">Refresh</button>
           </div>
           <div class="chart-filters" id="chart-filters">
-            <p>Chart Filters</p>
+            <div class = "filter-heading"><strong>Chart Filter</strong></div>
+            <label for "x-axis-filters">X-axis Categories:</label>
+            <select id = "x-axis-filters" name = "x-axis-filters">
+              <option value = "council_dist">Council District</option>
+              <option value = "dpwt-dist">DPWT Main District</option>
+              <option value = "majr_wshd">Major Watershed</option>
+            </select>
+            <!--
+            <fieldset class='x-axis-filters'>
+              <legend>X-axis Categories:</legend>
+              <input id = "council_dist" name = "x-filters" type = "radio" value = "council_district" checked/>
+              <label for='council_dist' class='radio-button'>Council District</label>
+              <input id = "dpwt_dist" name = "x-filters" type = "radio" value = "dpwt_district"/>
+              <label for='dpwt_dist' class='radio-button'>DPWT Main District</label>
+              <input id = "mjr_wshd" name = "x-filters" type = "radio" value = "major_wshed"/>
+              <label for='mjr_wshd' class='radio-button'>Major Watershed</label>
+            </fieldset>
+            -->
+            <button type="submit" id="refresh-button-alt">Refresh</button>
           </div>
         </form>
       </div>

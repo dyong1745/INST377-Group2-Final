@@ -12,7 +12,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(255, 255, 255);
-    font-size: 20px;
+    font-size: 17px;
     font-family: ‘Segoe UI’, sans-serif;
 }
 
@@ -70,6 +70,38 @@ a:hover {
 
 #refresh-button {
     margin-top: 20px;
+    color: rgb(243, 243, 243);
+    background-color: rgb(37, 150, 37);
+    border: none;
+    font-size: 15px;
+    padding: 7px;
+    border-radius: 3px;
+}
+
+#refresh-button:hover {
+    background-color: darkgreen;
+}
+
+#refresh-button:active {
+    background-color: rgb(0, 54, 0);
+}
+
+#refresh-button-alt {
+    margin-top: 20px;
+    color: rgb(243, 243, 243);
+    background-color: rgb(159, 30, 120);
+    border: none;
+    font-size: 15px;
+    padding: 7px;
+    border-radius: 3px;
+}
+
+#refresh-button-alt:hover {
+    background-color:  rgb(110, 19, 83);
+}
+
+#refresh-button-alt:active {
+    background-color: rgb(47, 8, 35);
 }
 
 #map {
@@ -93,17 +125,43 @@ a:hover {
     padding: 25px;
     margin-top: 20px;
     background-color: lightgreen;
+    border-radius: 10px;
+    border: 3px outset green;
+}
+
+.filter-heading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+     text-decoration: black dotted underline; 
 }
 
 .chart-filters {
+    display: flex;
     width: fit-content;
     height: fit-content;
+    flex-direction: column;
+    padding: 25px;
     margin-top: 260px;
     background-color: violet;
+    border-radius: 10px;
+    border: 3px outset purple;
 }
 
+/*
+.x-axis-filters {
+    border: 0;
+    
+}
+
+.x-axis-filters legend{
+    margin-bottom: 5px;
+}
+*/
+
 .footer {
-    background-color:rgb(255, 245, 183);
+    background-color:rgb(252, 215, 82);
     bottom: 0;
     height: 80px;
     width: 100%;
