@@ -49,9 +49,6 @@ function markerPlace(array, map) {
     });
   }
 
-function updateDropdown(){
-
-}
 
   async function retrieveData (){
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
