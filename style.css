@@ -109,12 +109,14 @@ a:hover {
     height: 400px;
     width: 600px;
     margin-bottom: 30px;
+    border-radius: 5px;
 }
 
 #chart {
     height: 400px;
     width: 600px;
     background-color: lightgreen;
+    border-radius: 5px;
 }
 
 .map-filters {
