@@ -1,6 +1,6 @@
 function filterLitterData(array, typeLitterInput1){
     let coordArray = []
-   return array.filter((item) => item.type_litter === typeLitterInput1);
+   return array.filter((item) => item.type_litter.includes(typeLitterInput1));
     
 }
 
@@ -49,6 +49,10 @@ function markerPlace(array, map) {
     });
   }
 
+function updateDropdown(){
+
+}
+
   async function retrieveData (){
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
@@ -90,7 +94,7 @@ async function mainEvent() {
     // const type_cleanup = document.querySelector('#type-clean');
     const showMap = initMap();
 
-    const type_litter_value = typeLitter.value;
+    let type_litter_value = typeLitter.value;
     
     // const org_value = organization.value;
     // const type_clean_value = type_cleanup.value;
@@ -107,20 +111,33 @@ async function mainEvent() {
     // submit.style.display = 'none'; // let your submit button disappear
     const form = document.querySelector('.filters')
     const submit = document.querySelector('#refresh-button');
+    
 
     // filter map data and place markers on the map
-    const mapFilters = filterLitterData(json, type_litter_value).slice(0,30);
+    const mapFilters = filterLitterData(json, typeLitter.value).slice(0,30);
     console.log('mapFilters', map)
     markerPlace(mapFilters, showMap);
    
     console.log(form);
     let currentArr = [];
 
+    // Event listener for refresh button
     form.addEventListener('submit', (submitEvent) => {
+        console.log('typeLitter:', typeLitter.value);
         // submitEvent.preventDefault();
-      console.log('Button Pressed');
-      injectHTML(uniqueArr);
-      markerPlace(mapFilters, showMap)
+        console.log('Refresh Button Pressed');
+        injectHTML(uniqueArr);
+        markerPlace(mapFilters, showMap)
+    });
+
+    // Event listener for dropdown menu (select options)
+    typeLitter.addEventListener('change', (submitEvent) => {
+        // submitEvent.preventDefault();
+        const filterLitter = filterLitterData(json, typeLitter.value).slice(0,30);
+        console.log('mapFilters', filterLitter);
+        console.log('type_litter_val: ', typeLitter.value);
+        
+        markerPlace(filterLitter, showMap);
     });
 }
 
