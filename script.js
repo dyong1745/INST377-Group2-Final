@@ -91,6 +91,7 @@ async function mainEvent() {
     const showMap = initMap();
 
     const type_litter_value = typeLitter.value;
+    
     // const org_value = organization.value;
     // const type_clean_value = type_cleanup.value;
 
@@ -107,7 +108,8 @@ async function mainEvent() {
     const form = document.querySelector('.filters')
     const submit = document.querySelector('#refresh-button');
 
-    const mapFilters = filterLitterData(json, type_litter_value).slice(0,10);
+    // filter map data and place markers on the map
+    const mapFilters = filterLitterData(json, type_litter_value).slice(0,30);
     markerPlace(mapFilters, showMap);
    
     console.log(form);
