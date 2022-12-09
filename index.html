@@ -17,6 +17,7 @@
       integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
       crossorigin=""
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="menu">
@@ -41,7 +42,9 @@
           <div class = "map-heading">Map of Litter Cleanups Based on Type of Litter</div>
           <div id = "map"></div>
           <div class = "chart-heading">Total Bags of Litter By Location</div>
-          <div id = "chart" >Chart</div>
+          <div class = "chart">
+            <canvas id ="myChart"></canvas>
+          </div>
         </div>
         <form class = "filters">
           <div class="map-filters" id="map-filters">
