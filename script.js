@@ -49,8 +49,40 @@ function markerPlace(array, map) {
     });
   }
 
+function initChart(chart) {
+  const labels = ['J', 'F', 'M', 'A','M','J'];
+  const data = {
+    labels : labels,
+    datasets: [{
+      label: 'A dataset',
+      data: [4,5,6,7,8,9, 10]
+    }]
+  };
 
-  async function retrieveData (){
+  const config = {
+    type : "bar",
+    data : data,
+    options: {}
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
+}
+
+function shapeChartData(array) {
+  return array.reduce((collection, item) => {
+    if(!collection[item.category]) {
+      collection[item.category] = [item];
+    } else {
+      collection[item.category].push(item);
+    };
+    return collection;
+  }, {});
+}
+
+async function retrieveData (){
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
@@ -72,8 +104,6 @@ async function mainEvent() {
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
     let uniqueArr = []
-   
-    
     
     // console.log('mapfilters:', mapFilters);
     console.log(json);
@@ -117,6 +147,13 @@ async function mainEvent() {
    
     console.log(form);
     let currentArr = [];
+
+    // Display Chart
+    const targetChart = document.querySelector('#myChart');
+    const chartData = await retrieveData();
+    const shapedChart = shapeChartData(chartData);
+    console.log(shapedChart);
+    const showChart = initChart(targetChart, shapedChart);
 
     // Event listener for refresh button
     form.addEventListener('submit', (submitEvent) => {

@@ -120,10 +120,10 @@ a:hover {
     font-size: 18px;
 }
 
-#chart {
+.chart {
     height: 400px;
     width: 600px;
-    background-color: lightgreen;
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
 }
 
