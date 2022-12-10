@@ -49,13 +49,15 @@ function markerPlace(array, map) {
     });
   }
 
-function initChart(chart) {
-  const labels = ['J', 'F', 'M', 'A','M','J'];
+function initChart(chart,object) {
+
+    const labels = Object.keys(object); // organization names
+    const info = Object.values(object); // num of times organization appears
   const data = {
     labels : labels,
     datasets: [{
       label: 'A dataset',
-      data: [4,5,6,7,8,9, 10]
+      data: info
     }]
   };
 
@@ -73,10 +75,10 @@ function initChart(chart) {
 
 function shapeChartData(array) {
   return array.reduce((collection, item) => {
-    if(!collection[item.category]) {
-      collection[item.category] = [item];
+    if(!collection[item.council_district]) {
+      collection[item.council_district] = parseInt(item.total_bags_litter);
     } else {
-      collection[item.category].push(item);
+      collection[item.council_district] += parseInt(item.total_bags_litter);
     };
     return collection;
   }, {});
@@ -138,6 +140,7 @@ async function mainEvent() {
     // submit.style.display = 'none'; // let your submit button disappear
     const form = document.querySelector('.filters')
     const submit = document.querySelector('#refresh-button');
+    const xAxis = document.querySelector('#x-axis-filters');
     
 
     // filter map data and place markers on the map
@@ -151,7 +154,7 @@ async function mainEvent() {
     // Display Chart
     const targetChart = document.querySelector('#myChart');
     const chartData = await retrieveData();
-    const shapedChart = shapeChartData(chartData);
+    const shapedChart = shapeChartData(json);
     console.log(shapedChart);
     const showChart = initChart(targetChart, shapedChart);
 
@@ -173,6 +176,11 @@ async function mainEvent() {
         
         markerPlace(filterLitter, showMap);
     });
+
+    // Syntax for eventlistener
+    // xAxis.addEventListener('change' (submitEvent) => {
+        
+    // }
 }
 
 document.addEventListener("DOMContentLoaded", async () => mainEvent());
