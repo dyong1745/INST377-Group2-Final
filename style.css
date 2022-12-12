@@ -168,6 +168,22 @@ a:hover {
     border: 3px outset purple;
 }
 
+.purpose-parag {
+    margin: 0px 80px 40px 80px;
+}
+
+.where-parag {
+    margin: 0px 80px 40px 80px;
+}
+
+.instruc-parag {
+    margin: 0px 80px 40px 80px;
+}
+
+.contact-parag {
+    margin: 0px 80px 40px 80px;
+}
+
 .footer {
     background-color:rgb(252, 215, 82);
     bottom: 0;
