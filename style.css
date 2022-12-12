@@ -49,6 +49,8 @@ a:hover {
     margin-bottom: 40px;
 }
 
+/*Styling the home page title header*/
+
 .header {
     display: flex;
     justify-content: center;
@@ -69,6 +71,8 @@ a:hover {
     justify-content: center;
 }
 
+/*For styling the map, chart, and their filters */
+
 .visuals {
     display: flex;
     flex-direction: column;
@@ -79,6 +83,8 @@ a:hover {
     flex-direction: column;
     margin-left: 40px;
 }
+
+/*Styling the refresh button*/
 
 #refresh-button {
     margin-top: 20px;
@@ -116,6 +122,8 @@ a:hover {
     background-color: rgb(47, 8, 35);
 }
 
+/*For the map and the map filter */
+
 #map {
     display: block;
     height: 400px;
@@ -125,22 +133,6 @@ a:hover {
 }
 
 .map-heading {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.chart {
-    display: flex; 
-    height: 350px;
-    width: 600px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-}
-
-.chart-heading {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -158,6 +150,24 @@ a:hover {
     background-color: lightgreen;
     border-radius: 10px;
     border: 3px outset green;
+}
+
+/*For the chart and the chart filter */
+
+.chart {
+    display: flex; 
+    height: 350px;
+    width: 600px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.chart-heading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .filter-heading {
@@ -179,6 +189,8 @@ a:hover {
     border-radius: 10px;
     border: 3px outset purple;
 }
+
+/*For styling paragraphs in the About Page */
 
 .dot {
     text-decoration: underline dotted;
@@ -205,6 +217,8 @@ a:hover {
     margin-right: auto;
     width: 50%;
 }
+
+/* Styles the footer for all pages */
 
 .footer {
     background-color:rgb(252, 215, 82);
