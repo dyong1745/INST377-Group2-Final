@@ -211,7 +211,21 @@ a:hover {
     margin: 0px 80px 40px 80px;
 }
 
+#county-pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
 #filter-pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#filter-pic-alt {
     display: block;
     margin-left: auto;
     margin-right: auto;
