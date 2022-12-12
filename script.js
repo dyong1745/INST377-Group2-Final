@@ -181,7 +181,7 @@ async function mainEvent() {
 
   /*
     // Event listener for chart dropdown menu
-    chartFilter.addEventListener('change' (submitEvent) => {
+    changeXAxis.addEventListener('change' (submitEvent) => {
       
     });
         
