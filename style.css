@@ -108,7 +108,7 @@ a:hover {
     display: block;
     height: 400px;
     width: 600px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     border-radius: 5px;
 }
 
@@ -121,7 +121,8 @@ a:hover {
 }
 
 .chart {
-    height: 400px;
+    display: flex; 
+    height: 350px;
     width: 600px;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;

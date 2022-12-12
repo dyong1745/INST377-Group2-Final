@@ -1,6 +1,6 @@
 function filterLitterData(array, typeLitterInput1){
-    let coordArray = []
-   return array.filter((item) => item.type_litter.includes(typeLitterInput1));
+  // let coordArray = []
+  return array.filter((item) => item.type_litter.includes(typeLitterInput1));
     
 }
 
@@ -50,14 +50,14 @@ function markerPlace(array, map) {
   }
 
 function initChart(chart,object) {
-
-    const labels = Object.keys(object); // organization names
-    const info = Object.values(object); // num of times organization appears
+  const labels = Object.keys(object); // location names
+  const info = Object.values(object); // num of times location appears
   const data = {
     labels : labels,
     datasets: [{
-      label: 'A dataset',
-      data: info
+      label: 'Total Bags of Litter',
+      data: info,
+      backgroundColor: 'rgb(159, 30, 120)',
     }]
   };
 
@@ -84,6 +84,19 @@ function shapeChartData(array) {
   }, {});
 }
 
+/*
+function changeChart(chart, dataObject) {
+  const labels = Object.keys(dataObject); // location names
+  const info = Object.values(dataObject); // num of times location appears
+
+  chart.data.labels = labels;
+  chart.data.datasets.forEach((set) => {
+    set.data = info; 
+    return set;
+  });
+  chart.update();
+*/
+
 async function retrieveData (){
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
@@ -107,20 +120,11 @@ async function mainEvent() {
     const json = await data.json(); // the data isn't json until we access it using dot notation
     let uniqueArr = []
     
-    // console.log('mapfilters:', mapFilters);
     console.log(json);
-    // console.log(json[0]['latitude']);
-    // data.forEach((item) => {
-    //     if (uniqueArr.includes(item) === false){
-    //         uniqueArr.push(item)
-    //     }
-    // })
 
-    // data array
+    // Data array
     console.log(uniqueArr);
     const typeLitter = document.querySelector('#type_litter');
-    // const organization = document.querySelector('#organization');
-    // const type_cleanup = document.querySelector('#type-clean');
     const showMap = initMap();
 
     let type_litter_value = typeLitter.value;
@@ -140,10 +144,8 @@ async function mainEvent() {
     // submit.style.display = 'none'; // let your submit button disappear
     const form = document.querySelector('.filters')
     const submit = document.querySelector('#refresh-button');
-    const xAxis = document.querySelector('#x-axis-filters');
-    
 
-    // filter map data and place markers on the map
+    // Filter map data and place markers on the map
     const mapFilters = filterLitterData(json, typeLitter.value).slice(0,30);
     console.log('mapFilters', map)
     markerPlace(mapFilters, showMap);
@@ -153,9 +155,9 @@ async function mainEvent() {
 
     // Display Chart
     const targetChart = document.querySelector('#myChart');
+    const changeXAxis = document.querySelector('#x-axis-filters');
     const chartData = await retrieveData();
     const shapedChart = shapeChartData(json);
-    console.log(shapedChart);
     const showChart = initChart(targetChart, shapedChart);
 
     // Event listener for refresh button
@@ -167,7 +169,7 @@ async function mainEvent() {
         markerPlace(mapFilters, showMap)
     });
 
-    // Event listener for dropdown menu (select options)
+    // Event listener for map dropdown menu (select options)
     typeLitter.addEventListener('change', (submitEvent) => {
         // submitEvent.preventDefault();
         const filterLitter = filterLitterData(json, typeLitter.value).slice(0,30);
@@ -177,10 +179,13 @@ async function mainEvent() {
         markerPlace(filterLitter, showMap);
     });
 
-    // Syntax for eventlistener
-    // xAxis.addEventListener('change' (submitEvent) => {
+  /*
+    // Event listener for chart dropdown menu
+    chartFilter.addEventListener('change' (submitEvent) => {
+      
+    });
         
-    // }
+  */
 }
 
 document.addEventListener("DOMContentLoaded", async () => mainEvent());
