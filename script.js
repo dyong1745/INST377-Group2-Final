@@ -75,10 +75,11 @@ function initChart(chart,object) {
 
 
 
-/* council district is council_district
+/* 
+ council district is council_district
  DPWT Main district is dpwt_main_dist
- Major Watershed is major_wshed
 */ 
+
 // function that handles the shape of the chart
 function shapeChartData(array,chartValue = 'council_district') {
   return array.reduce((collection, item) => {
@@ -109,32 +110,10 @@ function removeData(chart) {
     chart.update();
 }
 
-/*
-function changeChart(chart, dataObject) {
-  const labels = Object.keys(dataObject); // location names
-  const info = Object.values(dataObject); // num of times location appears
-
-  chart.data.labels = labels;
-  chart.data.datasets.forEach((set) => {
-    set.data = info; 
-    return set;
-  });
-  chart.update();
-*/
-
 async function retrieveData (){
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
-    // console.log(json);
-    // console.log(pullData(json, 'ORGANIZATION'));
-    // console.log(pullData(json, 'TYPE_CLEANUP'));
-    // console.log(pullData(json, 'TYPE_LITTER'));
-    // console.log(pullData(json, 'TOTAL_BAGS_LITTER'));
-    // console.log(pullData(json, 'MAJOR_WSHED'));
-    // console.log(pullData(json, 'COUNCIL_DISTRICT'));
-    // console.log(pullData(json, 'DPWT_MAIN_DIST'));
-    // const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
     return pullData(json);
 
 }
@@ -154,19 +133,6 @@ async function mainEvent() {
 
     let type_litter_value = typeLitter.value;
     
-    // const org_value = organization.value;
-    // const type_clean_value = type_cleanup.value;
-
-    // const orgValue = org.options[org.selectedIndex].value;
-    // const clean_val = type_clean.options[type_clean.selectedIndex].value;
-
-    // console.log("org:", org);
-    // console.log("clean",type_clean);
-    // const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-    // const submit = document.querySelector('#get-resto'); // get a reference to your submit button
-    // const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
-    // const chartTarget = document.querySelector('#myChart');
-    // submit.style.display = 'none'; // let your submit button disappear
     const form = document.querySelector('.filters')
     const submit = document.querySelector('#refresh-button');
 
@@ -185,6 +151,7 @@ async function mainEvent() {
     const shapedChart = shapeChartData(json);
     const showChart = initChart(targetChart, shapedChart);
     console.log("shapedChart:", shapedChart);
+
     // Event listener for refresh button
     form.addEventListener('submit', (submitEvent) => {
         console.log('typeLitter:', typeLitter.value);
