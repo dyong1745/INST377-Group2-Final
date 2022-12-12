@@ -218,6 +218,11 @@ a:hover {
     width: 20%;
 }
 
+#county-pic:hover {
+    filter:grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
 #filter-pic {
     display: block;
     margin-left: auto;
