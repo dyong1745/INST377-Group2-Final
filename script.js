@@ -73,15 +73,40 @@ function initChart(chart,object) {
   );
 }
 
-function shapeChartData(array) {
+
+
+/* council district is council_district
+ DPWT Main district is dpwt_main_dist
+ Major Watershed is major_wshed
+*/ 
+// function that handles the shape of the chart
+function shapeChartData(array,chartValue = 'council_district') {
   return array.reduce((collection, item) => {
-    if(!collection[item.council_district]) {
-      collection[item.council_district] = parseInt(item.total_bags_litter);
+    
+    
+    if(!collection[item[chartValue]]) {
+      collection[item[chartValue]] = parseInt(item.total_bags_litter);
     } else {
-      collection[item.council_district] += parseInt(item.total_bags_litter);
+      collection[item[chartValue]] += parseInt(item.total_bags_litter);
     };
+
     return collection;
+    
   }, {});
+}
+
+function addData(chart,object) {
+  const labels = Object.keys(object); // location names
+  const info = Object.values(object); // num of times location appears
+  chart.data.labels = labels;
+  chart.data.datasets.data = info;
+  chart.update();
+}
+
+function removeData(chart) {
+    chart.data.labels = [];
+    chart.data.datasets.data = [];
+    chart.update();
 }
 
 /*
@@ -159,7 +184,7 @@ async function mainEvent() {
     const chartData = await retrieveData();
     const shapedChart = shapeChartData(json);
     const showChart = initChart(targetChart, shapedChart);
-
+    console.log("shapedChart:", shapedChart);
     // Event listener for refresh button
     form.addEventListener('submit', (submitEvent) => {
         console.log('typeLitter:', typeLitter.value);
@@ -179,13 +204,20 @@ async function mainEvent() {
         markerPlace(filterLitter, showMap);
     });
 
-  /*
+  
     // Event listener for chart dropdown menu
-    changeXAxis.addEventListener('change' (submitEvent) => {
+    changeXAxis.addEventListener('change', (submitEvent) => {
+      console.log('Chart Filter Selection Pressed');
+        
+      const chartSelection = shapeChartData(json,changeXAxis.value);
+      removeData(showChart);
+      addData(showChart,chartSelection);
+      console.log("shape data:", chartSelection);
       
+        
     });
         
-  */
+  
 }
 
 document.addEventListener("DOMContentLoaded", async () => mainEvent());
