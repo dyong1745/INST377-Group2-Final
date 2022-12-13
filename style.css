@@ -196,19 +196,7 @@ a:hover {
 .dot {
     text-decoration: underline dotted;
 }
-.purpose-parag {
-    margin: 0px 80px 40px 80px;
-}
-
-.where-parag {
-    margin: 0px 80px 40px 80px;
-}
-
-.instruc-parag {
-    margin: 0px 80px 40px 80px;
-}
-
-.contact-parag {
+.parag {
     margin: 0px 80px 40px 80px;
 }
 
@@ -268,8 +256,13 @@ a:hover {
         display: none;
     }
 
+    .header {
+        text-align: center;
+    }
+
     .subtitle {
         margin-bottom: 20px;
+        text-align: center;
     }
 
     .container {
@@ -305,6 +298,10 @@ a:hover {
     .chart {
         width: 100%;
         
+    }
+
+    .parag {
+        margin: 0px 48px 40px 48px;
     }
 
     .footer {
