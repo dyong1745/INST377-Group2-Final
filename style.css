@@ -63,6 +63,7 @@ a:hover {
     justify-content: center;
     margin-bottom: 30px;
     font-size: 16px;
+    text-decoration: black dotted underline;
 }
 
 .container {
@@ -255,6 +256,16 @@ a:hover {
 
     .wrapper {
         margin-bottom: 10px;
+    }
+
+    .menu {
+        display:block;
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .Project-name {
+        display: none;
     }
 
     .subtitle {
